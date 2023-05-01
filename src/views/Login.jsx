@@ -27,12 +27,12 @@ const Login = () => {
       .then((userCredential) => {
           const user = userCredential.user;
           localStorage.clear();
-          localStorage.setItem("user",email);
-         console.log(userCredential)
+          localStorage.setItem("user",user.id);
+        
           navigate("/");
       })
       .catch((error) => {
-         
+         console.log(err)
       });
 
   }

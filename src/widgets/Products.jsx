@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../model/Firebase'
-import { addDoc,getDocs, collection } from "firebase/firestore";
+import { addDoc,getDocs, collection,arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { useNavigate } from 'react-router';
 
 const Products = () => {
@@ -34,7 +34,15 @@ const Products = () => {
         try{
             
             e.preventDefault();
-            await addDoc(cartCollectionRef,product)
+            const userId=localStorage.getItem("user")
+            const productRef=doc(db,"users",userId);
+            await updateDoc(productRef,{
+            cart:arrayUnion(product)                
+            })
+            
+
+           
+            
         }catch(err)
         {
             console.log(err)
