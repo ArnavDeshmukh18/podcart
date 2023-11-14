@@ -22,7 +22,7 @@ const Products = () => {
                 ...doc.data(),
                 id: doc.id,
             }));
-           // console.log(filteredData);
+           console.log(filteredData);
 
             setProducts(filteredData);
             setLoading(false);

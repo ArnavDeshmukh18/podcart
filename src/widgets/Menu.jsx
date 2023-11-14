@@ -3,17 +3,22 @@ import { IoIosArrowDropdownCircle, IoIosCart,IoIosArrowDropupCircle } from "reac
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineSearch } from "react-icons/ai";
 import { podcart } from "../assets";
+import { useNavigate } from "react-router";
 
 const Menu = () => {
-
+const navigate=useNavigate();
 const [toggle,setToggle]=useState(false);
 const onClickC=()=>{
   setToggle(!toggle);
 }
 
+const goto=()=>{
+  navigate('/cart');
+}
+
   return (
     <div className="menu flex flex-row items-center justify-between mt-3">
-      <div className="flex flex-row items-center w-[300px] ">
+      <div className="flex flex-row items-center w-[300px] " onClick={navigate('/')}>
         <img src={podcart} alt="" />
       </div>
       <div className="flex flex-row items-center gap-7  text-[20px]">
@@ -40,7 +45,7 @@ const onClickC=()=>{
           </button>
         </div>
         <div className="cart text-[20px]">
-          <button className="flex flex-row items-center gap-2">
+          <button className="flex flex-row items-center gap-2" onClick={goto}>
             <IoIosCart />
             <div className="font-semibold">Cart</div>
           </button>
